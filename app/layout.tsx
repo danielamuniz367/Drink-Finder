@@ -3,6 +3,7 @@
 
 import { Providers } from "./providers";
 import { Heading, Center } from "@chakra-ui/react";
+import Header from "./components/Header";
 
 export default function RootLayout({
   children,
@@ -12,12 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Center bg="tomato" h="100px" color="white">
-            <Heading>I'm a Heading</Heading>
-          </Center>
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
