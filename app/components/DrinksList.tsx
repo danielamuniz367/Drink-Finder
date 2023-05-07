@@ -1,17 +1,11 @@
 "use client";
 
-import {
-  AbsoluteCenter,
-  Center,
-  LinkOverlay,
-  List,
-  ListItem,
-} from "@chakra-ui/react";
+import { List } from "@chakra-ui/react";
 import DrinkItem from "./DrinkItem";
 
 export default function DrinksList({ data }: any) {
   return (
-    <List spacing={3}>
+    <List>
       {data?.map((drink: any, index: any) => (
         <DrinkItem key={index} {...drink} />
       ))}

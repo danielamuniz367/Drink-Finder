@@ -2,7 +2,6 @@
 "use client";
 
 import { Providers } from "./providers";
-import { Heading, Center } from "@chakra-ui/react";
 import Header from "./components/Header";
 
 export default function RootLayout({
@@ -13,7 +12,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );

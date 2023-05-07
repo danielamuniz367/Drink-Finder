@@ -1,14 +1,28 @@
-import { LinkOverlay, ListItem } from "@chakra-ui/react";
-import NextLink from "next/link";
+import { ListItem } from "@chakra-ui/react";
+import { Link } from "@chakra-ui/next-js";
+import DrinkImage from "./DrinkImage";
+import { MARGINS } from "../consts";
 
 export default function DrinkItem(props: any) {
-  const { idDrink, strDrink } = props;
-  console.log(props);
+  const { idDrink } = props;
+  const { list } = MARGINS;
+
   return (
-    <ListItem key={idDrink} height="60px" fontSize="17px">
-      <LinkOverlay as={NextLink} href={`drink/${idDrink}`}>
-        {strDrink}
-      </LinkOverlay>
+    <ListItem
+      key={idDrink}
+      height="60px"
+      fontSize="17px"
+      borderBottom="1px"
+      borderColor="gray.200"
+    >
+      <Link href={`drink/${idDrink}`}>
+        <DrinkImage
+          {...props}
+          boxSize="40px"
+          flexDirection="row"
+          margins={list}
+        />
+      </Link>
     </ListItem>
   );
 }
