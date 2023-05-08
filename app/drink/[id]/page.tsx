@@ -11,14 +11,7 @@ import convertToOz from "@/app/utils/convertToOz";
 import getPastelColor from "@/app/utils/getPastelColor";
 import getKeys from "@/app/utils/getKeys";
 
-export interface DrinkIdProps {
-  params: {
-    id: string;
-  };
-  idDrink?: string;
-}
-
-export default function DrinkId({ params }: DrinkIdProps) {
+export default function DrinkId({ params }: { params: { id: string } }) {
   const { id } = params;
   const { data, isLoading, isError } = useCocktailDetails(id);
   const { drinks } = data ? data : [];
