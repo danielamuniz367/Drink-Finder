@@ -10,8 +10,15 @@ import useCocktailDetails from "@/app/hooks/useCocktailDetails";
 import convertToOz from "@/app/utils/convertToOz";
 import getPastelColor from "@/app/utils/getPastelColor";
 import getKeys from "@/app/utils/getKeys";
+import { ReactNode } from "react";
 
-export default function DrinkId({ params }: any) {
+interface DrinkIdProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function DrinkId({ params }: DrinkIdProps) {
   const { id } = params;
   const { data, isLoading, isError } = useCocktailDetails(id);
   const { drinks } = data ? data : [];
