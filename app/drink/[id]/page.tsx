@@ -72,7 +72,7 @@ export default function DrinkId({ params }: any) {
               randomPastelColors={randomPastelColors}
               margins={{ legend }}
             />
-            {series.length > 0 ? (
+            {!series.every((s) => s === 0) ? (
               <PieChart
                 series={series}
                 colors={randomPastelColors}
