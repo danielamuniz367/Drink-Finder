@@ -4,7 +4,6 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { Box } from "@chakra-ui/react";
-import { AllMarginGroups } from "../consts/margins";
 
 interface PieChartProps {
   series: number[];

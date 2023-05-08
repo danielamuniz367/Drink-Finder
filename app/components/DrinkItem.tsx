@@ -1,6 +1,7 @@
 import { ListItem } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/next-js";
-import DrinkImageName, { DrinkImageNameProps } from "./DrinkImageName";
+import DrinkImageName from "./DrinkImageName";
+import { DrinkImageNameProps } from "../shared/interfaces/drinkImageName.interfaces";
 import { MARGINS } from "./../consts/margins";
 
 export default function DrinkItem(props: DrinkImageNameProps) {

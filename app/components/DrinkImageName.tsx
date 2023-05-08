@@ -6,21 +6,7 @@ import {
   ResponsiveValue,
   As,
 } from "@chakra-ui/react";
-import { MarginGroup } from "../consts/margins";
-
-export interface DrinkImageNameProps {
-  idDrink?: string;
-  strDrink: string;
-  strDrinkThumb: string;
-  boxSize: string;
-  flexDirection: ResponsiveValue<any>;
-  bold: As;
-  fontSize: string;
-  margins: {
-    img: MarginGroup;
-    name: MarginGroup;
-  };
-}
+import { DrinkImageNameProps } from "../shared/interfaces/drinkImageName.interfaces";
 
 // combines both image and name of drink for list and drink details
 // note: considered making separate (atomic) components for image and name but

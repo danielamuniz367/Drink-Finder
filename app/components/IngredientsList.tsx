@@ -1,7 +1,7 @@
 "use client";
 
 import { Flex, List, ListItem, Square, Text } from "@chakra-ui/react";
-import { AllMarginGroups } from "../consts/margins";
+import { AllMarginGroups } from "../shared/interfaces/margins.interface";
 
 interface IngredientsListProps {
   drinkDetails: any;
