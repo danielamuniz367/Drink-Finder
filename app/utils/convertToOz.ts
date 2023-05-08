@@ -1,6 +1,8 @@
-export default function convertToOz(m: string) {
-  const split = m.split(" ");
-  const measurement = split
+import getConversionResult from "./getConversionResult";
+
+export default function convertToOz(measurement: string) {
+  const splitMsrmt = measurement.split(" ");
+  const parsedMsrmt = splitMsrmt
     .filter((s) => parseInt(s))
     .map((m) =>
       m.includes("/")
@@ -9,15 +11,17 @@ export default function convertToOz(m: string) {
     )
     .reduce((a, c) => a + c, 0);
 
-  const unit = split
+  const unit = splitMsrmt
+    .map((m) => m.toLowerCase())
     .filter(
-      (s) =>
-        s === "cup" ||
-        s === "cups" ||
-        s === "tsp" ||
-        s === "tblsp" ||
-        s === "ml" ||
-        s === "cl"
+      (u) =>
+        u === "cup" ||
+        u === "cups" ||
+        u === "tsp" ||
+        u === "tblsp" ||
+        u === "ml" ||
+        u === "cl" ||
+        u === "oz"
     )
     .join(" ");
 
@@ -26,23 +30,28 @@ export default function convertToOz(m: string) {
   switch (unit) {
     case "cup":
     case "cups":
-      conversion = (measurement * 8).toFixed(1).toString();
+      conversion = getConversionResult(parsedMsrmt * 8);
       break;
     case "tsp":
-      conversion = (measurement / 6).toFixed(1).toString();
+      conversion = getConversionResult(parsedMsrmt / 6);
       break;
     case "tblsp":
-      conversion = (measurement / 2).toFixed(1).toString();
+      conversion = getConversionResult(parsedMsrmt / 2);
       break;
     case "ml":
-      conversion = (measurement / 29.574).toFixed(1).toString();
+      conversion = getConversionResult(parsedMsrmt / 29.574);
       break;
     case "cl":
-      conversion = (measurement / 2.957).toFixed(1).toString();
+      conversion = getConversionResult(parsedMsrmt / 2.957);
       break;
+    case "l":
+      conversion = getConversionResult(parsedMsrmt * 33.814);
+      break;
+    case "oz":
+      conversion = getConversionResult(parsedMsrmt);
     default:
       break;
   }
 
-  return conversion ? `${conversion} oz` : m;
+  return conversion ? `${conversion} oz` : measurement;
 }

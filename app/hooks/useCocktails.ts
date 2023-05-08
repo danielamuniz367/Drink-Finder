@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { DRINKS_SEARCH_URL, FETCHER } from "../consts";
+import { DRINKS_SEARCH_URL, FETCHER } from "../consts/api";
 
 function useCocktails(search: string) {
   const { data, isLoading, error } = useSWR(

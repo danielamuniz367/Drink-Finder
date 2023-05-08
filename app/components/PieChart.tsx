@@ -7,7 +7,6 @@ import { Box } from "@chakra-ui/react";
 
 export default function PieChart(props: any) {
   const { labels, series, colors, margin } = props;
-  console.log("series", margin);
 
   const options: ApexOptions = {
     labels: labels,

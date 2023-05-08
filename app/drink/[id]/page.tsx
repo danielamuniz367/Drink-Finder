@@ -1,12 +1,12 @@
 "use client";
 
+import { Card, CardBody, Center, Flex, Heading, Text } from "@chakra-ui/react";
+import { MARGINS } from "../../consts/margins";
 import DrinkImage from "@/app/components/DrinkImage";
 import IngredientsList from "@/app/components/IngredientsList";
 import PieChart from "@/app/components/PieChart";
 import useCocktailDetails from "@/app/hooks/useCocktailDetails";
 import convertToOz from "@/app/utils/convertToOz";
-import { Card, CardBody, Center, Flex, Heading, Text } from "@chakra-ui/react";
-import { MARGINS } from "../../consts";
 import getPastelColor from "@/app/utils/getPastelColor";
 import getKeys from "@/app/utils/getKeys";
 
@@ -27,9 +27,8 @@ export default function DrinkId({ params }: any) {
 
   const series = measurementsKeys
     .map((k) => (drinkDetails[k] = convertToOz(drinkDetails[k])))
-    .filter((d: any) => d.includes("oz"));
-
-  const seriesFloat = series.map((s) => parseFloat(s));
+    .filter((d: any) => d.includes("oz"))
+    .map((s) => parseFloat(s));
 
   const randomPastelColors = ingredientsKeys.map((i) => getPastelColor());
 
@@ -66,10 +65,10 @@ export default function DrinkId({ params }: any) {
               randomPastelColors={randomPastelColors}
               margins={{ legend }}
             />
-            {seriesFloat.length > 0 ? (
+            {series.length > 0 ? (
               <PieChart
                 labels={ingredientsKeys}
-                series={seriesFloat}
+                series={series}
                 colors={randomPastelColors}
                 margin={chart.m}
               />

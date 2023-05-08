@@ -20,5 +20,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-// routing system is here with children
