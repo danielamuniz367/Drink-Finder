@@ -14,6 +14,7 @@ export default function DrinkItem(props: any) {
       fontSize="17px"
       borderBottom="1px"
       borderColor="gray.200"
+      _hover={{ backgroundColor: "blue.100" }}
     >
       <Link href={`drink/${idDrink}`}>
         <DrinkImage

@@ -6,7 +6,7 @@ import { ApexOptions } from "apexcharts";
 import { Box } from "@chakra-ui/react";
 
 export default function PieChart(props: any) {
-  const { labels, series, colors, margin } = props;
+  const { series, colors, margin } = props;
 
   const options: ApexOptions = {
     colors: colors,
@@ -18,7 +18,6 @@ export default function PieChart(props: any) {
       dropShadow: {
         enabled: false,
       },
-      height: "100%",
       redrawOnWindowResize: false,
       sparkline: {
         enabled: true,
@@ -55,13 +54,13 @@ export default function PieChart(props: any) {
   };
 
   return (
-    <Box m={margin}>
+    <Box m={margin} width="120px" minHeight="120px">
       <ReactApexChart
         options={options}
         series={series}
         type="pie"
         height="120px"
-        width="120px"
+        width="100%"
       />
     </Box>
   );
