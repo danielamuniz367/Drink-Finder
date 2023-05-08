@@ -29,6 +29,8 @@ export const MARGINS = {
       m: "20px",
     },
     instructions: {
+      // margin-top is 10px here since we want to be a total of 30px away from either
+      // the ingredients legend or the pie chart
       mt: "10px",
       mr: "20px",
       mb: "20px",
