@@ -1,3 +1,7 @@
+"use client";
+
+import { Text } from "@chakra-ui/react";
+
 export default function Drinks() {
-  return <p>this is my drinks page</p>;
+  return <Text>This is the drinks page</Text>;
 }

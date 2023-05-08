@@ -9,7 +9,6 @@ export default function PieChart(props: any) {
   const { labels, series, colors, margin } = props;
 
   const options: ApexOptions = {
-    labels: labels,
     colors: colors,
     chart: {
       animations: {

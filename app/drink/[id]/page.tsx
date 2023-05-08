@@ -17,19 +17,26 @@ export default function DrinkId({ params }: any) {
   const drinkDetails = drinks ? drinks[0] : {};
   const { strInstructions } = drinkDetails;
 
+  // for margins
   const { img, name, ingredients, legend, chart, instructions } = MARGINS.card;
 
-  // ingredients
-  const ingredientsKeys = getKeys(drinkDetails, "strIngredient");
+  const ingredientsKeys = getKeys(drinkDetails, "strIngredient").filter(
+    (d) => drinkDetails[d] !== null
+  );
+  const measurementsKeys = getKeys(
+    drinkDetails,
+    "strMeasure",
+    ingredientsKeys.length
+  );
 
-  // measurements
-  const measurementsKeys = getKeys(drinkDetails, "strMeasure");
-
+  // for pie chart data
+  // conversions that don't return with oz unit get assigned 0 so they are not included in pie chart
   const series = measurementsKeys
     .map((k) => (drinkDetails[k] = convertToOz(drinkDetails[k])))
-    .filter((d: any) => d.includes("oz"))
+    .map((s) => (!s.includes("oz") ? (s = "0") : s))
     .map((s) => parseFloat(s));
 
+  // random pastel colors for ingredients and pie chart
   const randomPastelColors = ingredientsKeys.map((i) => getPastelColor());
 
   if (isError) return <div>failed to load</div>;
@@ -67,7 +74,6 @@ export default function DrinkId({ params }: any) {
             />
             {series.length > 0 ? (
               <PieChart
-                labels={ingredientsKeys}
                 series={series}
                 colors={randomPastelColors}
                 margin={chart.m}

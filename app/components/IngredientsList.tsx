@@ -23,7 +23,10 @@ export default function IngredientsList(props: any) {
               borderRadius="3"
             ></Square>
             <Text>
-              {drinkDetails[key]} ({drinkDetails[measurementsKeys[index]]})
+              {drinkDetails[key]}
+              {drinkDetails[measurementsKeys[index]] && (
+                <span>&nbsp;({drinkDetails[measurementsKeys[index]]})</span>
+              )}
             </Text>
           </Flex>
         </ListItem>

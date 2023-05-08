@@ -1,6 +1,7 @@
 import getConversionResult from "./getConversionResult";
 
 export default function convertToOz(measurement: string) {
+  if (!measurement) return "";
   const splitMsrmt = measurement.split(" ");
   const parsedMsrmt = splitMsrmt
     .filter((s) => parseInt(s))
