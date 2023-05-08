@@ -3,19 +3,19 @@
 import { Card, CardBody, Center, Flex, Heading, Text } from "@chakra-ui/react";
 import { SpinnerIcon } from "@chakra-ui/icons";
 import { MARGINS } from "../../consts/margins";
-import DrinkImage from "@/app/components/DrinkImage";
 import IngredientsList from "@/app/components/IngredientsList";
 import PieChart from "@/app/components/PieChart";
+import DrinkImageName from "@/app/components/DrinkImageName";
 import useCocktailDetails from "@/app/hooks/useCocktailDetails";
 import convertToOz from "@/app/utils/convertToOz";
 import getPastelColor from "@/app/utils/getPastelColor";
 import getKeys from "@/app/utils/getKeys";
-import { ReactNode } from "react";
 
-interface DrinkIdProps {
+export interface DrinkIdProps {
   params: {
     id: string;
   };
+  idDrink?: string;
 }
 
 export default function DrinkId({ params }: DrinkIdProps) {
@@ -61,7 +61,7 @@ export default function DrinkId({ params }: DrinkIdProps) {
       <Card variant="unstyled">
         <CardBody>
           <Center>
-            <DrinkImage
+            <DrinkImageName
               {...drinkDetails}
               boxSize="150px"
               flexDirection="column"

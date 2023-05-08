@@ -1,6 +1,21 @@
-import { Flex, Center, Image, Text } from "@chakra-ui/react";
+import { Flex, Center, Image, Text, ResponsiveValue } from "@chakra-ui/react";
+import { MarginGroup, AllMarginGroups } from "../consts/margins";
 
-export default function DrinkImage(props: any) {
+export interface DrinkImageNameProps {
+  idDrink?: string;
+  strDrink: string;
+  strDrinkThumb: string;
+  boxSize: string;
+  flexDirection: ResponsiveValue<any>;
+  bold: any;
+  fontSize: string;
+  margins: {
+    img: MarginGroup;
+    name: MarginGroup;
+  };
+}
+
+export default function DrinkImageName(props: DrinkImageNameProps) {
   const {
     strDrink,
     strDrinkThumb,

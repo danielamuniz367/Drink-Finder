@@ -4,8 +4,15 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { Box } from "@chakra-ui/react";
+import { AllMarginGroups } from "../consts/margins";
 
-export default function PieChart(props: any) {
+interface PieChartProps {
+  series: number[];
+  colors: string[];
+  margin: string;
+}
+
+export default function PieChart(props: PieChartProps) {
   const { series, colors, margin } = props;
 
   const options: ApexOptions = {

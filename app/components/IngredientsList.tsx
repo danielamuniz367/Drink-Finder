@@ -1,8 +1,17 @@
 "use client";
 
 import { Flex, List, ListItem, Square, Text } from "@chakra-ui/react";
+import { AllMarginGroups } from "../consts/margins";
 
-export default function IngredientsList(props: any) {
+interface IngredientsListProps {
+  drinkDetails: any;
+  ingredientsKeys: string[];
+  measurementsKeys: string[];
+  margins: AllMarginGroups["card"];
+  randomPastelColors: string[];
+}
+
+export default function IngredientsList(props: IngredientsListProps) {
   const {
     drinkDetails,
     ingredientsKeys,
@@ -13,8 +22,8 @@ export default function IngredientsList(props: any) {
   const { legend } = margins;
 
   return (
-    <List m={legend.m}>
-      {ingredientsKeys?.map((key: any, index: any) => (
+    <List m={legend?.m}>
+      {ingredientsKeys?.map((key: string, index: number) => (
         <ListItem key={index} fontSize="17px">
           <Flex alignItems="center" gap="2">
             <Square

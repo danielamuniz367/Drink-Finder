@@ -1,9 +1,9 @@
 import { ListItem } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/next-js";
-import DrinkImage from "./DrinkImage";
+import DrinkImageName, { DrinkImageNameProps } from "./DrinkImageName";
 import { MARGINS } from "./../consts/margins";
 
-export default function DrinkItem(props: any) {
+export default function DrinkItem(props: DrinkImageNameProps) {
   const { idDrink } = props;
   const { list } = MARGINS;
 
@@ -17,7 +17,7 @@ export default function DrinkItem(props: any) {
       _hover={{ backgroundColor: "blue.100" }}
     >
       <Link href={`drink/${idDrink}`}>
-        <DrinkImage
+        <DrinkImageName
           {...props}
           boxSize="40px"
           flexDirection="row"
