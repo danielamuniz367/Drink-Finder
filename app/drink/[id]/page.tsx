@@ -21,6 +21,7 @@ export default function DrinkId({ params }: { params: { id: string } }) {
   // for margins
   const { img, name, ingredients, legend, chart, instructions } = MARGINS.card;
 
+  // gets ingredient and measurement keys
   const ingredientsKeys = getKeys(drinkDetails, "strIngredient").filter(
     (d) => drinkDetails[d] !== null
   );
