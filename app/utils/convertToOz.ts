@@ -16,6 +16,7 @@ export default function convertToOz(m: string) {
         s === "cups" ||
         s === "tsp" ||
         s === "tblsp" ||
+        s === "ml" ||
         s === "cl"
     )
     .join(" ");
@@ -32,6 +33,9 @@ export default function convertToOz(m: string) {
       break;
     case "tblsp":
       conversion = (measurement / 2).toFixed(1).toString();
+      break;
+    case "ml":
+      conversion = (measurement / 29.574).toFixed(1).toString();
       break;
     case "cl":
       conversion = (measurement / 2.957).toFixed(1).toString();

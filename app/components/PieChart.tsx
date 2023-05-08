@@ -1,10 +1,13 @@
+"use client";
+
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
+import { Box } from "@chakra-ui/react";
 
 export default function PieChart(props: any) {
-  const { labels, series, colors } = props;
-  console.log("series", series);
+  const { labels, series, colors, margin } = props;
+  console.log("series", margin);
 
   const options: ApexOptions = {
     labels: labels,
@@ -14,10 +17,13 @@ export default function PieChart(props: any) {
         enabled: false,
       },
       selection: { enabled: false },
-      height: "120px",
-      width: "100%",
       dropShadow: {
         enabled: false,
+      },
+      height: "100%",
+      redrawOnWindowResize: false,
+      sparkline: {
+        enabled: true,
       },
     },
     states: {
@@ -51,12 +57,14 @@ export default function PieChart(props: any) {
   };
 
   return (
-    <ReactApexChart
-      options={options}
-      series={series}
-      type="pie"
-      width="100%"
-      height="100%"
-    />
+    <Box m={margin}>
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="pie"
+        height="120px"
+        width="120px"
+      />
+    </Box>
   );
 }

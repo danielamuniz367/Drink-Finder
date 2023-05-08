@@ -38,7 +38,7 @@ export const MARGINS = {
       m: "20px",
     },
     instructions: {
-      mt: "30px",
+      mt: "10px",
       mr: "20px",
       mb: "20px",
       ml: "20px",

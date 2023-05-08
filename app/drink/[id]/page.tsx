@@ -19,7 +19,6 @@ export default function DrinkId({ params }: any) {
 
   const { img, name, ingredients, legend, chart, instructions } = MARGINS.card;
 
-  // note to self that you want to make a function to get ingredients and measurements
   // ingredients
   const ingredientsKeys = getKeys(drinkDetails, "strIngredient");
 
@@ -59,7 +58,7 @@ export default function DrinkId({ params }: any) {
           >
             Ingredients:
           </Heading>
-          <Flex flexDirection="row">
+          <Flex flexDirection="row" gap={0}>
             <IngredientsList
               drinkDetails={drinkDetails}
               ingredientsKeys={ingredientsKeys}
@@ -72,10 +71,12 @@ export default function DrinkId({ params }: any) {
                 labels={ingredientsKeys}
                 series={seriesFloat}
                 colors={randomPastelColors}
+                margin={chart.m}
               />
             ) : null}
           </Flex>
           <Text
+            fontSize="17px"
             mt={instructions.mt}
             mr={instructions.mr}
             mb={instructions.mb}
