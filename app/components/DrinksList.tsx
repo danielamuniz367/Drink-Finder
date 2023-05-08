@@ -3,10 +3,6 @@
 import { List } from "@chakra-ui/react";
 import DrinkItem from "./DrinkItem";
 
-interface DrinksListProps {
-  drinks: any[];
-}
-
 export default function DrinksList({ data }: any) {
   return (
     <List>

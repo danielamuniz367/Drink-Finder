@@ -1,5 +1,12 @@
-import { Flex, Center, Image, Text, ResponsiveValue } from "@chakra-ui/react";
-import { MarginGroup, AllMarginGroups } from "../consts/margins";
+import {
+  Flex,
+  Center,
+  Image,
+  Text,
+  ResponsiveValue,
+  As,
+} from "@chakra-ui/react";
+import { MarginGroup } from "../consts/margins";
 
 export interface DrinkImageNameProps {
   idDrink?: string;
@@ -7,7 +14,7 @@ export interface DrinkImageNameProps {
   strDrinkThumb: string;
   boxSize: string;
   flexDirection: ResponsiveValue<any>;
-  bold: any;
+  bold: As;
   fontSize: string;
   margins: {
     img: MarginGroup;
@@ -15,6 +22,9 @@ export interface DrinkImageNameProps {
   };
 }
 
+// combines both image and name of drink for list and drink details
+// note: considered making separate (atomic) components for image and name but
+// chakra-ui's Image and Text componets seem to take care of that (please correct me if not so)
 export default function DrinkImageName(props: DrinkImageNameProps) {
   const {
     strDrink,
