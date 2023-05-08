@@ -1,11 +1,13 @@
 "use client";
 
-import { Center, Heading } from "@chakra-ui/react";
+import { Center, Heading, Link } from "@chakra-ui/react";
 
 export default function Header() {
   return (
     <Center bg="tomato" h="100px" color="white">
-      <Heading>Thirsty drink finder</Heading>
+      <Heading>
+        <Link href="/">Thirsty drink finder</Link>
+      </Heading>
     </Center>
   );
 }

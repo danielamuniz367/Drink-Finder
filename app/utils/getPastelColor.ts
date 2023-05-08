@@ -3,9 +3,9 @@ export default function getPastelColor() {
     "hsl(" +
     360 * Math.random() +
     "," +
-    (25 + 60 * Math.random()) +
+    (25 + 70 * Math.random()) +
     "%," +
-    (75 + 10 * Math.random()) +
+    (80 + 10 * Math.random()) +
     "%)"
   );
 }

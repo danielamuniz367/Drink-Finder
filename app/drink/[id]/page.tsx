@@ -8,6 +8,7 @@ import convertToOz from "@/app/utils/convertToOz";
 import { Card, CardBody, Center, Flex, Heading, Text } from "@chakra-ui/react";
 import { MARGINS } from "../../consts";
 import getPastelColor from "@/app/utils/getPastelColor";
+import getKeys from "@/app/utils/getKeys";
 
 export default function DrinkId({ params }: any) {
   const { id } = params;
@@ -20,20 +21,18 @@ export default function DrinkId({ params }: any) {
 
   // note to self that you want to make a function to get ingredients and measurements
   // ingredients
-  const ingredientsKeys = Object.keys(drinkDetails).filter(
-    (k) => k.includes("strIngredient") && drinkDetails[k] !== null
-  );
+  const ingredientsKeys = getKeys(drinkDetails, "strIngredient");
 
   // measurements
-  const measurementsKeys = Object.keys(drinkDetails).filter(
-    (k) => k.includes("strMeasure") && drinkDetails[k] !== null
-  );
+  const measurementsKeys = getKeys(drinkDetails, "strMeasure");
 
-  measurementsKeys.forEach((k) => {
-    drinkDetails[k] = convertToOz(drinkDetails[k]);
-  });
+  const series = measurementsKeys
+    .map((k) => (drinkDetails[k] = convertToOz(drinkDetails[k])))
+    .filter((d: any) => d.includes("oz"));
 
-  const randomPastelColors = ingredientsKeys.map((m) => getPastelColor());
+  const seriesFloat = series.map((s) => parseFloat(s));
+
+  const randomPastelColors = ingredientsKeys.map((i) => getPastelColor());
 
   if (isError) return <div>failed to load</div>;
   if (isLoading) return <div>Loading drink details...</div>;
@@ -68,7 +67,13 @@ export default function DrinkId({ params }: any) {
               randomPastelColors={randomPastelColors}
               margins={{ legend }}
             />
-            {/* <PieChart /> */}
+            {seriesFloat.length > 0 ? (
+              <PieChart
+                labels={ingredientsKeys}
+                series={seriesFloat}
+                colors={randomPastelColors}
+              />
+            ) : null}
           </Flex>
           <Text
             mt={instructions.mt}

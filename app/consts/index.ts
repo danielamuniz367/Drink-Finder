@@ -7,6 +7,8 @@ export const DRINK_DETAILS_URL =
 export const FETCHER = (url: RequestInfo | URL) =>
   fetch(url).then((res) => res.json());
 
+export const UNITS = "cup" || "cups" || "tsp" || "tblsp" || "cl";
+
 export const MARGINS = {
   list: {
     img: {

@@ -1,23 +1,40 @@
 export default function convertToOz(m: string) {
   const split = m.split(" ");
-  const measurement = split[0];
-  const unit = split[1];
-  console.log(measurement, unit);
+  const measurement = split
+    .filter((s) => parseInt(s))
+    .map((m) =>
+      m.includes("/")
+        ? parseFloat((parseInt(m[0]) / parseInt(m[2])).toString())
+        : parseInt(m)
+    )
+    .reduce((a, c) => a + c, 0);
+
+  const unit = split
+    .filter(
+      (s) =>
+        s === "cup" ||
+        s === "cups" ||
+        s === "tsp" ||
+        s === "tblsp" ||
+        s === "cl"
+    )
+    .join(" ");
+
   let conversion = "";
 
   switch (unit) {
     case "cup":
     case "cups":
-      conversion = (parseInt(measurement) * 8).toFixed(1).toString();
+      conversion = (measurement * 8).toFixed(1).toString();
       break;
     case "tsp":
-      conversion = (parseInt(measurement) / 6).toFixed(1).toString();
+      conversion = (measurement / 6).toFixed(1).toString();
       break;
     case "tblsp":
-      conversion = (parseInt(measurement) / 2).toFixed(1).toString();
+      conversion = (measurement / 2).toFixed(1).toString();
       break;
     case "cl":
-      conversion = (parseInt(measurement) / 2.957).toFixed(1).toString();
+      conversion = (measurement / 2.957).toFixed(1).toString();
       break;
     default:
       break;
