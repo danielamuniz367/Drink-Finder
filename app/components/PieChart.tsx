@@ -54,13 +54,12 @@ export default function PieChart(props: any) {
   };
 
   return (
-    <Box m={margin} width="120px" minHeight="120px">
+    <Box m={margin} maxWidth="120px">
       <ReactApexChart
         options={options}
         series={series}
         type="pie"
-        height="120px"
-        width="100%"
+        width="120"
       />
     </Box>
   );

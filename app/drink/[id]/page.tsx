@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, CardBody, Center, Flex, Heading, Text } from "@chakra-ui/react";
+import { SpinnerIcon } from "@chakra-ui/icons";
 import { MARGINS } from "../../consts/margins";
 import DrinkImage from "@/app/components/DrinkImage";
 import IngredientsList from "@/app/components/IngredientsList";
@@ -40,7 +41,13 @@ export default function DrinkId({ params }: any) {
   const randomPastelColors = ingredientsKeys.map((i) => getPastelColor());
 
   if (isError) return <div>failed to load</div>;
-  if (isLoading) return <div>Loading drink details...</div>;
+  if (isLoading)
+    return (
+      <div>
+        <SpinnerIcon />
+        Loading drink details...
+      </div>
+    );
 
   return (
     <>
