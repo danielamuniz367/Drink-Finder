@@ -49,7 +49,7 @@ export default function DrinkId({ params }: { params: { id: string } }) {
         Loading drink details...
       </div>
     );
-
+  if (drinks === null) return <div>No drink details</div>;
   return (
     <>
       <Card variant="unstyled">

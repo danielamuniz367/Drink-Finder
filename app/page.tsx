@@ -5,10 +5,12 @@ import { SpinnerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import DrinksList from "./components/DrinksList";
 import useCocktails from "./hooks/useCocktails";
+import { useDebounce } from "usehooks-ts";
 
 export default function Page() {
   const [search, setSearch] = useState("");
-  const { data, isLoading, isError } = useCocktails(search);
+  const debouncedValue = useDebounce<string>(search, 500);
+  const { data, isLoading, isError } = useCocktails(debouncedValue);
 
   const { drinks } = data ? data : [];
 
